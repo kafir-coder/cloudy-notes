@@ -58,6 +58,7 @@
 	},
 	"dependencies": {
 		"apollo-server": "^3.3.0",
-		"graphql": "^15.5.3"
+		"graphql": "^15.5.3",
+		"mongoose": "^6.0.5"
 	}
 }
