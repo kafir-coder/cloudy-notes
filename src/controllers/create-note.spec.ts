@@ -7,7 +7,9 @@ const make_sut = () => {
 };
 describe('create note tests suite', () => {
 	beforeAll(() => {
-		connect().then();
+		connect().then(() => {
+			console.log('connected');
+		});
 	});
 	test("should ensure incomming data isn't empty", async () => {
 		const sut = make_sut();
@@ -32,5 +34,17 @@ describe('create note tests suite', () => {
 			status: 400,
 			body: new Error('incomming body is imcomplete'),
 		});
+	});
+	test('ensure data is saved', async () => {
+		const sut = make_sut();
+		const incomming_data = {
+			islink: true,
+			content: 'www.github.com/kafir-coder',
+			owner: '613a371b0ed7c3ebc9aa4c60',
+		};
+		//@ts-ignore
+		const result = await sut.handle(incomming_data);
+		expect(result).toHaveProperty('_id');
+		expect(result).toHaveProperty('owner');
 	});
 });
