@@ -6,10 +6,9 @@ const make_sut = () => {
 	return sut;
 };
 describe('create note tests suite', () => {
-	beforeAll(() => {
-		connect().then(() => {
-			console.log('connected');
-		});
+	beforeAll(done => {
+		connect().then(() => {});
+		done();
 	});
 	test("should ensure incomming data isn't empty", async () => {
 		const sut = make_sut();

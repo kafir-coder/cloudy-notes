@@ -5,10 +5,9 @@ const make_sut = () => {
 	return sut;
 };
 describe('create user tests suite', () => {
-	beforeAll(() => {
-		connect().then(() => {
-			console.log('connected');
-		});
+	beforeAll(done => {
+		connect().then(() => {});
+		done();
 	});
 	test("should ensures incomming data isn't empty", async () => {
 		const sut = make_sut();
