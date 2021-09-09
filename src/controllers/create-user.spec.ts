@@ -33,4 +33,17 @@ describe('create user tests suite', () => {
 			body: new Error('incomming body is imcomplete'),
 		});
 	});
+	test('should invalidate incomming data if username also exists', async () => {
+		const sut = make_sut();
+		const imcomplete_incomming_data = {
+			username: 'kafir-coder',
+			password: 'caio1234',
+		};
+		//@ts-ignore
+		const result = await sut.handle(imcomplete_incomming_data);
+		expect(result).toEqual({
+			status: 400,
+			body: new Error('user already exists'),
+		});
+	});
 });
