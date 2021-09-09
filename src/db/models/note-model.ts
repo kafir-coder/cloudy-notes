@@ -12,4 +12,4 @@ const note_schema = new Schema({
 	},
 });
 
-export const note = mongoose.model('user', note_schema);
+export const note = mongoose.model('notes', note_schema);
