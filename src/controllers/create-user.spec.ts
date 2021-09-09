@@ -46,4 +46,15 @@ describe('create user tests suite', () => {
 			body: new Error('user already exists'),
 		});
 	});
+	test('ensure data is saved', async () => {
+		const sut = make_sut();
+		const incomming_data = {
+			username: 'kafir-coder' + Math.random() * 100000,
+			password: '^Kirinoamgo2018$',
+		};
+		//@ts-ignore
+		const result = await sut.handle(incomming_data);
+		expect(result).toHaveProperty('_id');
+		expect(result).toHaveProperty('username');
+	});
 });
