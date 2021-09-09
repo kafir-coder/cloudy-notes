@@ -1,9 +1,15 @@
+import { connect } from '../db';
 import { createUser } from './create-user';
 const make_sut = () => {
 	const sut = new createUser();
 	return sut;
 };
 describe('create user tests suite', () => {
+	beforeAll(() => {
+		connect().then(() => {
+			console.log('connected');
+		});
+	});
 	test("should ensures incomming data isn't empty", async () => {
 		const sut = make_sut();
 		const empty_incomming_data = {};
