@@ -19,4 +19,18 @@ describe('create note tests suite', () => {
 			body: new Error('incomming body empty'),
 		});
 	});
+	test("should ensure incomming data shouldn't be in absence with a required field", async () => {
+		const sut = make_sut();
+		const imcomplete_incomming_data = {
+			islink: true,
+			content: 'www.github.com/kafir-coder',
+			//owner: '613a371b0ed7c3ebc9aa4c60',
+		};
+		//@ts-ignore
+		const result = await sut.handle(imcomplete_incomming_data);
+		expect(result).toEqual({
+			status: 400,
+			body: new Error('incomming body is imcomplete'),
+		});
+	});
 });
