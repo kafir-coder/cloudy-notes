@@ -2,22 +2,24 @@ import { gql } from 'apollo-server';
 import { DocumentNode } from 'graphql';
 
 export const typeDefs: DocumentNode = gql`
-	type Book {
-		title: String
-		author: String
+	type Mutation {
+		addUser(username: String, password: String): user
+		addNote(islink: Boolean, content: String, owner: String): note
 	}
-
 	type user {
 		id: String
 		username: String
 		password: String
 	}
-	type Query {
-		users: [user]
-		books: [Book]
+	type note {
+		id: String
+		islink: Boolean
+		content: String
+		owner: String
 	}
 	type Query {
-		books: [Book]
+		users: [user]
+		notes: [note]
 	}
 `;
 
