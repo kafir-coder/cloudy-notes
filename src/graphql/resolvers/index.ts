@@ -1,18 +1,15 @@
-const books = [
-	{
-		title: 'The Awakening',
-		author: 'Kate Chopin',
-	},
-	{
-		title: 'City of Glass',
-		author: 'Paul Auster',
-	},
-];
+import { createUser } from '../../controllers/create-user';
+import { IncommingData } from '../../controllers/utils/protocols';
 
 const resolvers = {
 	Query: {
-		books: () => books,
 		users: () => users,
+	},
+	Mutation: {
+		addUser(_: any, args: IncommingData) {
+			const user = new createUser();
+			return user.handle(args);
+		},
 	},
 };
 

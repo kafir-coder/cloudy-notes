@@ -2,11 +2,6 @@ import { gql } from 'apollo-server';
 import { DocumentNode } from 'graphql';
 
 export const typeDefs: DocumentNode = gql`
-	type Book {
-		title: String
-		author: String
-	}
-
 	type user {
 		id: String
 		username: String
@@ -14,10 +9,6 @@ export const typeDefs: DocumentNode = gql`
 	}
 	type Query {
 		users: [user]
-		books: [Book]
-	}
-	type Query {
-		books: [Book]
 	}
 `;
 
