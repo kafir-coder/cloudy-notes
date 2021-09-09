@@ -24,5 +24,7 @@ export class createUser implements controller {
 		if (exists) {
 			return make_response(400, new Error('user already exists'));
 		}
+		const result = await user.create(incommingData);
+		return result;
 	}
 }
