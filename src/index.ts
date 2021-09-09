@@ -1,5 +1,6 @@
 import { ApolloServer } from 'apollo-server';
-import { resolvers, typeDefs } from './graphql/index';
+import resolvers from './graphql/resolvers';
+import typeDefs from './graphql/typeDefs';
 import { connect } from './db/index';
 const server = new ApolloServer({ typeDefs, resolvers });
 const PORT = process.env.PORT;
